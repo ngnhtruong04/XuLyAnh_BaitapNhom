@@ -1,0 +1,31 @@
+import numpy as np
+import cv2
+
+# Set the size of the chessboard
+rows, cols = 8, 8  # 8x8 chessboard
+square_size = 50   # Size of each square in pixels
+
+# Create a black square
+black_square = np.zeros((square_size, square_size), dtype=np.uint8)
+
+# Create a white square
+white_square = np.ones((square_size, square_size), dtype=np.uint8) * 255
+
+# Initialize the chessboard with zeros (black squares)
+chessboard = np.zeros((rows * square_size, cols * square_size), dtype=np.uint8)
+
+# Fill the chessboard with black and white squares
+for row in range(rows):
+    for col in range(cols):
+        if (row + col) % 2 == 0:
+            chessboard[row * square_size:(row + 1) * square_size, col * square_size:(col + 1) * square_size] = white_square
+        else:
+            chessboard[row * square_size:(row + 1) * square_size, col * square_size:(col + 1) * square_size] = black_square
+
+# Display the chessboard
+cv2.imshow('Chessboard', chessboard)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+# Save the image if needed
+cv2.imwrite('chessboard.png', chessboard)
