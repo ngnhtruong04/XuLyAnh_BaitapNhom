@@ -14,7 +14,8 @@ rotated_image = np.zeros((height, width, 3), dtype=np.uint8)
 for i in range(height):
     for j in range(width):
         rotated_image[height - 1 - i, width - 1 - j] = image[i, j]
-
+    if ( i == height/2 ):
+        break
 # Display the original and rotated images
 cv2.imshow('Original Image', image)
 cv2.imshow('Rotated Image', rotated_image)

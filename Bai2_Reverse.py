@@ -1,16 +1,13 @@
-import cv2
 
-# Load the image
-image = cv2.imread('C:/Users/Admin/Desktop/WorkSpace/XuLyAnh/Project_Nhom/Bai2.png', cv2.IMREAD_GRAYSCALE)
 
-# Invert the image
-inverted_image = cv2.bitwise_not(image)
+import numpy as np
 
-# Display the original and inverted image
-cv2.imshow('Original Image', image)
-cv2.imshow('Inverted Image', inverted_image)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+# Load the image manually
+image = np.loadtxt('C:/Users/Admin/Desktop/WorkSpace/XuLyAnh/Project_Nhom/Bai2.txt', dtype=np.uint8)
 
+# Invert the image manually
+inverted_image = 255 - image
+
+# Display the original and inverted image (using matplotlib or any other method)
 # Save the inverted image
-cv2.imwrite('C:/Users/Admin/Desktop/WorkSpace/XuLyAnh/Project_Nhom/Bai2_Result.png', inverted_image)
+np.savetxt('C:/Users/Admin/Desktop/WorkSpace/XuLyAnh/Project_Nhom/Bai2_Result.txt', inverted_image, fmt='%d')
